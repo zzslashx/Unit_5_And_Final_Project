@@ -1,6 +1,6 @@
 void intro() {
   drawGradientRect(width/2, height/2, width, height, blue5, pink);
-// sounds
+  // sounds
   theme.play();
   // web decoration
   stroke(255, 255, 255, 30);
@@ -17,26 +17,32 @@ void intro() {
   fill(255);
   textSize(x);
   textAlign(CENTER, CENTER);
-  text("BREAKOUT", width/2, height/4 + 100);
-  x = map(sin(frameCount * 0.05), -1, 1, 50, 150);
 
+  fill(#DA9EF2);
+  for (int x = -3; x <= 3; x += 3) {
+    for (int y = -3; y <= 3; y += 3) {
+      text("BREAKOUT", (width/2) + x, (height/4 + 100) + y);
+    }
+  }
+
+  fill(255);
+  text("BREAKOUT", width/2, height/4 + 100);
+
+
+x = 100 + sin(frameCount * 0.05) * 50;
 
 
   // subtitle
   fill(coolYellow);
-  textSize(35);
-  text("break the blocks to win!", width/2, height/4 + 75+150);
+  textSize(25);
+  text("Hit the ball and break the blocks to win!", width/2, height/4 + 75+150);
 
-
-  // start button
-  tactileRect(width/2 - 100, height/2 - 35+150, 200, 70);
-  fill(black);
-  textSize(35);
-  text("PLAY", width/2, height/2+10+150);
+  //play info
+  textSize(15);
+  fill(0);
+  text("<click to play!>", width/2, height/2+150);
 }
 void introClicks() {
 
-  if (mouseX>width/2-100 && mouseX<width/2-100+200 && mouseY>height/2-35+150 && mouseY< height/2 - 35+150+70) {
-    mode=GAME;
-  }
+  mode = GAME;
 }

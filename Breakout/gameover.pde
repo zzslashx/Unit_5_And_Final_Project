@@ -6,7 +6,11 @@ void gameover() {
   if(f==starryFrames) f=0;
   textSize(100);
   fill(255);
-  if(lives==0) text("YOU LOSE!", width/2, height/2-130);
+  if(lives==0){ 
+    text("YOU LOSE!", width/2, height/2-130);
+  }else{
+  text("YOU WIN!", width/2, height/2-100);
+  }
   textSize(35);
   text("<click to continue>", width/2, height/2+100);
 }
@@ -19,4 +23,6 @@ void gameoverClicks() {
     alive[i]=true;
     theme.rewind();
     gameover.rewind();
+    gameover.pause();
+    theme.play();
 }
