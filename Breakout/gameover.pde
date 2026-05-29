@@ -59,4 +59,5 @@ void gameoverClicks() {
   bally = height/2+150;
   numOfHits=0;
   numOfBricksLeft=n;
+  paddleX=width/2;
 }
