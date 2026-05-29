@@ -6,7 +6,7 @@ void game() {
 
   //score + lives
 
-  fill(#FCFAFC);
+  textSize(25);
 
   fill(#DA9EF2);
   text("Lives: " + lives, 74, 50);
@@ -46,10 +46,10 @@ void game() {
 
   //move paddles
   if (paddleX+paddleD/2<=width-3) {
-    if (dkey) paddleX+=10;
+    if (dkey) paddleX+=13;
   }
   if (paddleX-paddleD/2>=3) {
-    if (akey) paddleX -=10;
+    if (akey) paddleX -=13;
   }
   //bricks
   int i=0;

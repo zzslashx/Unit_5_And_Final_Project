@@ -38,7 +38,7 @@ void wallBounce() {
     lives--;
     bally=height/2+150;
     ballx=width/2;
-    vy=4;
+    vy=2;
     vx=0;
     hit.rewind();
     hit.play();

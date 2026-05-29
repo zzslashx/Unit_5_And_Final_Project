@@ -25,12 +25,4 @@ void gameoverClicks() {
     gameover.rewind();
     gameover.pause();
     theme.play();
-     ballx = width/2;
-  bally = height/2+150;
-  vx=0;
-  vy = 4;
-  balld=10;
-  paddleX = width/2;
-  paddleY = height;
-  paddleD = 100;
 }
