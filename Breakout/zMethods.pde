@@ -25,6 +25,8 @@ void paddleCollision() {
   if (dist(paddleX, paddleY, ballx, bally) <= paddleD/2 + balld/2) {
     vx = (ballx - paddleX) / 5;
     vy = (bally - paddleY) / 5;
+    bally-=15;
+    numOfHits++;
   }
 }
 
@@ -68,6 +70,7 @@ void manageBrick(int i) {
     vx = (ballx - brickX[i]) / 3;
     vy = (bally - brickY[i]) / 3;
     alive[i]=false;
+    numOfBricksLeft--;
     crack.rewind();
     crack.play();
     score++;

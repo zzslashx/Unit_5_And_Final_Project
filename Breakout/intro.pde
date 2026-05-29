@@ -1,7 +1,7 @@
 void intro() {
   drawGradientRect(width/2, height/2, width, height, blue5, pink);
   // sounds
-  
+
   theme.play();
   // web decoration
   stroke(255, 255, 255, 30);
@@ -30,7 +30,7 @@ void intro() {
   text("BREAKOUT", width/2, height/4 + 100);
 
 
-x = 100 + sin(frameCount * 0.05) * 50;
+  x = 100 + sin(frameCount * 0.05) * 50;
 
 
   // subtitle
@@ -39,9 +39,14 @@ x = 100 + sin(frameCount * 0.05) * 50;
   text("Hit the ball and break the blocks to win!", width/2, height/4 + 75+150);
 
   //play info
-  textSize(15);
-  fill(0);
-  text("<click to play!>", width/2, height/2+150);
+  textSize(35);
+  fill(#DA9EF2);
+  text("<click to play>", width/2-1, height/2+100);
+  text("<click to play>", width/2+1, height/2+100);
+  text("<click to play>", width/2, height/2+99);
+  text("<click to play>", width/2, height/2+101);
+  fill(255);
+  text("<click to play>", width/2, height/2+100);
 }
 void introClicks() {
 

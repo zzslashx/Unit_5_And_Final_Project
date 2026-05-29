@@ -25,7 +25,24 @@ void game() {
 
   fill(255);
   text("Score: " + score, width-75, 50);
-  
+  fill(#DA9EF2);
+
+  text("Number of hits: " + numOfHits, width/2-1, 50);
+  text("Number of hits: " + numOfHits, width/2+1, 50);
+  text("Number of hits: " + numOfHits, width/2, 49);
+  text("Number of hits: " + numOfHits, width/2, 51);
+  fill(255);
+  text("Number of hits: " + numOfHits, width/2, 50);
+
+
+  fill(#DA9EF2);
+  text("Number of Bricks Left: " + numOfBricksLeft, width/2-1, 25);
+  text("Number of Bricks Left: " + numOfBricksLeft, width/2+1, 25);
+  text("Number of Bricks Left: " + numOfBricksLeft, width/2, 24);
+  text("Number of Bricks Left: " + numOfBricksLeft, width/2, 26);
+  fill(255);
+  text("Number of Bricks Left: " + numOfBricksLeft, width/2, 25);
+
   //balls
   noStroke();
   fill(255);

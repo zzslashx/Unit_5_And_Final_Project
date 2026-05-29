@@ -28,6 +28,8 @@ float vx, vy;
 float x = 0;
 int score =0;
 int lives = 3;
+int numOfHits=0;
+int numOfBricksLeft;
 //brick variables
 int[] brickX;
 int[] brickY;
@@ -88,13 +90,14 @@ void setup() {
   ballx = width/2;
   bally = height/2+150;
   vx=0;
-  vy = 4;
+  vy = 2;
   balld=10;
 
   textAlign(CENTER);
   //brick
   brickD=50;
   n=45;
+  numOfBricksLeft=n;
   brickX = new int[n];
   brickY = new int[n];
   alive = new boolean[n];
