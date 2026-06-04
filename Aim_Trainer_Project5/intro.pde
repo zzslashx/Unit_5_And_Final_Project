@@ -2,19 +2,33 @@ void intro() {
   // sounds
   gameover.pause();
   theme.play();
-  
+
   // background
-  drawGradientRect(width/2, height/2, width, height,warmBlue,coolBlue);
-  
+  drawGradientRect(width/2, height/2, width, height, warmBlue, coolBlue);
+
   // text
   fill(255);
   textSize(90);
   text("AIM TRAINER", width/2, height/4);
-  
+
   fill(200, 220, 255);
   textSize(22);
   text("Test your mouse skills. Get better.", width/2, height/4 + 60);
-  
+
+  //ripples
+  for (int i=0; i<numRipples; i++) {
+    myRipples[i].show();
+    myRipples[i].act();
+  }
+
+  //trail
+  trail[trailIndex] = new Trail(mouseX, mouseY);
+  trailIndex = (trailIndex + 1) % trail.length; 
+  for (int i = 0; i < trail.length; i++) {
+    trail[i].show();
+    trail[i].act();
+  }
+
   // target decoration
   stroke(255, 255, 255, 80);
   strokeWeight(2);
@@ -27,13 +41,13 @@ void intro() {
   line(width/2, height/2 - 110, width/2, height/2 + 50);
 
   rectMode(CORNER);
-  
+
   // play button
   tactileRect(width/2 - 200, height/2 + height/4 - 50, 200, 100);
   fill(0);
   textSize(50);
   text("START", (width/2) - 100, height/2 + height/4);
-  
+
   // options button
   tactileRect(width/2 + 20, height/2 + height/4 - 50, 200, 100);
   fill(0);
@@ -46,7 +60,7 @@ void intro() {
     textSize(20);
     text("Best: " + highscore + " pts", width/2, height/2 + height/4 + 80);
   }
-  
+
   rectMode(CENTER);
 }
 

@@ -2,13 +2,25 @@ void game() {
 
   //visuals
   drawGradientRect(width/2, height/2, width, height, color(0, 20, 60), color(0, 80, 160));
- for (int i = width; i >= 10; i -= 10) {
-   strokeWeight(2);
-  line(0, i, i, 0);       
-  line(width, i, i, 0);   
-  line(0, i, i, height); 
-  line(width, i, i, height); 
-}
+  for (int i = width; i >= 10; i -= 10) {
+    strokeWeight(2);
+    line(0, i, i, 0);
+    line(width, i, i, 0);
+    line(0, i, i, height);
+    line(width, i, i, height);
+  }
+  //ripples
+  for (int i = 0; i < 5; i++) {
+    myRipples[i].show();
+    myRipples[i].act();
+  }
+  //trail
+  trail[trailIndex] = new Trail(mouseX, mouseY);
+  trailIndex = (trailIndex + 1) % trail.length;
+  for (int i = 0; i < trail.length; i++) {
+    trail[i].show();
+    trail[i].act();
+  }
 
   //pause button
   stroke(0);
@@ -142,5 +154,14 @@ void gameClicks() {
     lives--;
     bump.rewind();
     bump.play();
+  }
+}
+void mousePressed() {
+  if (mode == GAME) {
+    for (int i = 0; i < numRipples; i++) {
+      myRipples[i].x = mouseX;
+      myRipples[i].y = mouseY;
+      myRipples[i].size = i * (1000 / numRipples);
+    }
   }
 }

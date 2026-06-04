@@ -58,13 +58,30 @@ color ivoryBlack  = #000000;
 Minim minim;
 AudioPlayer theme, coin, bump, gameover;
 
+//ripple variables
+Ripple[] myRipples;
+int numRipples;
 
+//trail varaibles
+Trail[] trail = new Trail[150];
+int trailIndex = 0;
 void setup() {
   size(800, 800, FX2D);
   frameRate(60);
   imageMode(CENTER);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
+  //ripples
+  numRipples=25;
+  myRipples = new Ripple[numRipples]; //constructor
+  for (int i=0; i<numRipples; i++) {
+    myRipples[i] = new Ripple();
+  }
+
+  //mouse trail
+  for (int i = 0; i < trail.length; i++) {
+    trail[i] = new Trail(-100, -100);  // offscreen to start
+  }
 
   mode = INTRO;
 
@@ -105,7 +122,7 @@ void draw() {
     intro();
   } else if (mode == GAME) {
     game();
-    
+
     drawPopup();
   } else if (mode == PAUSE) {
     pause();
