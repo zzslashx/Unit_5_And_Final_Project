@@ -161,7 +161,7 @@ void drawPopup() {
   if (popupTimer > 0) {
     textSize(55);
     textAlign(CENTER, CENTER);
-    fill(255, 255, 255, popupTimer * 3); // fades out
+    fill(255, 255, 255, popupTimer * 5); // fades out
     text("+" + (int)popupValue, popupX, popupY - (50 - popupTimer)); // floats up
     popupTimer--;
   }

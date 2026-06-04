@@ -5,7 +5,20 @@ void intro() {
 
   // background
   drawGradientRect(width/2, height/2, width, height, warmBlue, coolBlue);
+  
+  //ripples
+  for (int i=0; i<numRipples; i++) {
+    myRipples[i].show();
+    myRipples[i].act();
+  }
 
+  //trail
+  trail[trailIndex] = new Trail(mouseX, mouseY);
+  trailIndex = (trailIndex + 1) % trail.length;
+  for (int i = 0; i < trail.length; i++) {
+    trail[i].show();
+    trail[i].act();
+  }
   // text
   fill(255);
   textSize(90);
@@ -15,28 +28,16 @@ void intro() {
   textSize(22);
   text("Test your mouse skills. Get better.", width/2, height/4 + 60);
 
-  //ripples
-  for (int i=0; i<numRipples; i++) {
-    myRipples[i].show();
-    myRipples[i].act();
-  }
 
-  //trail
-  trail[trailIndex] = new Trail(mouseX, mouseY);
-  trailIndex = (trailIndex + 1) % trail.length; 
-  for (int i = 0; i < trail.length; i++) {
-    trail[i].show();
-    trail[i].act();
-  }
 
   // target decoration
-  stroke(255, 255, 255, 80);
-  strokeWeight(2);
+  stroke(255, 255, 255, 150);
+  strokeWeight(3);
   noFill();
   circle(width/2, height/2 - 30, 120);
   circle(width/2, height/2 - 30, 80);
   circle(width/2, height/2 - 30, 20);
-  stroke(255, 255, 255, 60);
+  stroke(255, 255, 255, 100);
   line(width/2 - 80, height/2 - 30, width/2 + 80, height/2 - 30);
   line(width/2, height/2 - 110, width/2, height/2 + 50);
 
