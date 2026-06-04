@@ -58,6 +58,9 @@ color coolYellow = #FFF44F;
 color black = color(0);
 color purple = #301934;
 
+//star variables
+Star[] myStars;
+int numStars;
 
 ;
 
@@ -65,8 +68,14 @@ void setup() {
   starryFrames = 144;
   starry = new PImage[starryFrames];
 
+  numStars=200;
+  myStars = new Star[numStars]; //constructor
+  for (int i=0; i<numStars; i++) {
+    myStars[i] = new Star();
+  }
+
   int j = 0;
-  while (j<starryFrames) { 
+  while (j<starryFrames) {
     starry[j] = loadImage("frame_"+j+"_delay-0.04s.gif");
     j++;
   }
@@ -115,12 +124,12 @@ void setup() {
     }
     i++;
   }
-     //minim
+  //minim
   minim = new Minim(this);
   theme = minim.loadFile("MUSIC.mp3");
   crack = minim.loadFile("SUCCESS.wav");
   hit = minim.loadFile("FAILURE.wav");
-   gameover = minim.loadFile("gameover.wav");
+  gameover = minim.loadFile("gameover.wav");
 }
 
 

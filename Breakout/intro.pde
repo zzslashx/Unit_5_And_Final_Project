@@ -1,8 +1,9 @@
 void intro() {
-  drawGradientRect(width/2, height/2, width, height, blue5, pink);
-  // sounds
-
+ fill(0,10);
+ rect(0,0,width,height);
+ // sounds
   theme.play();
+  
   // web decoration
   stroke(255, 255, 255, 30);
   strokeWeight(3);
@@ -13,6 +14,14 @@ void intro() {
     line(0, 0, i, height);
     line(0, 0, width, i);
   }
+  //stars decoration animation
+  for (int i=0; i<numStars; i++){
+  myStars[i].show();
+  myStars[i].act();
+  }
+  
+  fill(0,10);
+  rect(0,0,width,height);
 
   // title
   fill(255);
