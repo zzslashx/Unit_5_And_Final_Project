@@ -1,7 +1,7 @@
 void intro() {
   // sounds
   gameover.pause();
-  theme.play();
+  if (!theme.isPlaying()) theme.play();
 
   // background
   drawGradientRect(width/2, height/2, width, height, warmBlue, coolBlue);

@@ -65,27 +65,50 @@ void game() {
       mode = GAMEOVER;
     }
   }
+  //move targets
+  if (movingTarget) {
+    x += tvx;
+    y += tvy;
+    if (x - d/2 <= 0 || x + d/2 >= width) tvx *= -1;
+    if (y - d/2 <= 0 || y + d/2 >= height) tvy *= -1;
+
+    x1 += tvx1;
+    y1 += tvy1;
+    if (x1 - d1/2 <= 0 || x1 + d1/2 >= width) tvx1 *= -1;
+    if (y1 - d1/2 <= 0 || y1 + d1/2 >= height) tvy1 *= -1;
+
+    x2 += tvx2;
+    y2 += tvy2;
+    if (x2 - d2/2 <= 0 || x2 + d2/2 >= width) tvx2 *= -1;
+    if (y2 - d2/2 <= 0 || y2 + d2/2 >= height) tvy2 *= -1;
+  }
 }
 void gameClicks() {
   boolean hit = false;
 
   // target 1
   if (dist(mouseX, mouseY, x, y) < d/8) {
-    timer1=180;
+    tvx *= 1.1;
+    tvy *= 1.1;
+    timer1=timerDuration;
     bull ++;
     popupValue = 3;
     hit = true;
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x, y) < d/4) {
-    timer1=180;
+    tvx *= 1.1;
+    tvy *= 1.1;
+    timer1=timerDuration;
     mid ++;
     popupValue = 2;
     hit = true;
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x, y) < d/2) {
-    timer1=180;
+    tvx *= 1.1;
+    tvy *= 1.1;
+    timer1=timerDuration;
     out ++;
     popupValue = 1;
     hit = true;
@@ -95,21 +118,27 @@ void gameClicks() {
 
   // target 2
   else if (dist(mouseX, mouseY, x1, y1) < d1/8) {
-    timer2=180;
+    tvx1 *= 1.1;
+    tvy1 *= 1.1;
+    timer2=timerDuration;
     bull ++;
     popupValue = 3;
     hit = true;
     x1 = random(d/2, width-d/2);
     y1 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x1, y1) < d1/4) {
-    timer2=180;
+    tvx1 *= 1.1;
+    tvy1 *= 1.1;
+    timer2=timerDuration;
     mid ++;
     popupValue = 2;
     hit = true;
     x1 = random(d/2, width-d/2);
     y1 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x1, y1) < d1/2) {
-    timer2=180;
+    tvx1 *= 1.1;
+    tvy1 *= 1.1;
+    timer2=timerDuration;
     out ++;
     popupValue = 1;
     hit = true;
@@ -119,21 +148,27 @@ void gameClicks() {
 
   // target 3
   else if (dist(mouseX, mouseY, x2, y2) < d2/8) {
-    timer3=180;
+    tvx2 *= 1.1;
+    tvy2 *= 1.1;
+    timer3=timerDuration;
     bull ++;
     popupValue = 3;
     hit = true;
     x2 = random(d/2, width-d/2);
     y2 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x2, y2) < d2/4) {
-    timer3=180;
+    tvx2 *= 1.1;
+    tvy2 *= 1.1;
+    timer3=timerDuration;
     mid ++;
     popupValue = 2;
     hit = true;
     x2 = random(d/2, width-d/2);
     y2 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x2, y2) < d2/2) {
-    timer3=180;
+    tvx2 *= 1.1;
+    tvy2 *= 1.1;
+    timer3=timerDuration;
     out ++;
     popupValue = 1;
     hit = true;

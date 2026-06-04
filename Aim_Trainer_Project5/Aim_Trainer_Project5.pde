@@ -35,6 +35,14 @@ int typeOfTarget;
 int highscore=0;
 int total= bull*3+mid*2+out;
 boolean newHighScore = false;
+float tvx, tvy;
+float tvx1, tvy1;
+float tvx2, tvy2;
+float angle = random(0, 2*PI);
+float angle1 = random(0, 2*PI);
+float angle2 = random(0, 2*PI);
+boolean movingTarget=false;
+float timerDuration;
 //IMAGES--------------------------------------------------------------
 PImage tomato, pizza;
 //COLOR PALLETTE-------------------------------------------------------------------------
@@ -103,10 +111,11 @@ void setup() {
   out=0;
   lives=5;
   typeOfTarget = 1;
-  sliderX = map(d, 70, 255, 40, 165);
+  sliderX = map(100, 50, 150, 40, 165);
   timer1 = 180; // 3 seconds at 60fps
   timer2 = 180;
   timer3 = 180;
+  timerDuration=180;
 
   //minim
   minim = new Minim(this);
@@ -114,10 +123,19 @@ void setup() {
   coin = minim.loadFile("coin.wav");
   bump = minim.loadFile("FAILURE.wav");
   gameover = minim.loadFile("gameover.wav");
+
+  //move target
+  tvx = cos(angle);
+  tvy = sin(angle);
+
+  tvx1 = cos(angle1);
+  tvy1 = sin(angle1);
+
+  tvx2 = cos(angle2);
+  tvy2 = sin(angle2);
 }
 
 void draw() {
-  println(frameRate);
   if (mode == INTRO) {
     intro();
   } else if (mode == GAME) {

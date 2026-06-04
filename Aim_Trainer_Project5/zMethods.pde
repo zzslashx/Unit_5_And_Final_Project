@@ -60,13 +60,13 @@ void displayTarget1() {
     bump.play();
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
-    timer1 = 180;
+    timer1 = timerDuration;
   }
   // draw timer ring to show time left
   stroke(255, 0, 0);
   strokeWeight(5);
   noFill();
-  arc(x, y, d + 20, d + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer1/180.0));
+  arc(x, y, d + 20, d + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer1/timerDuration));
 
   if (typeOfTarget == 1) {
     stroke(0);
@@ -98,13 +98,13 @@ void displayTarget2() {
     bump.play();
     x1 = random(d1/2, width-d1/2);
     y1 = random(d1/2, height-d1/2);
-    timer2 = 180;
+    timer2 = timerDuration;
   }
   // draw timer ring to show time left
   stroke(255, 0, 0);
   strokeWeight(5);
   noFill();
-  arc(x1, y1, d1 + 20, d1 + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer2/180.0));
+  arc(x1, y1, d1 + 20, d1 + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer2/timerDuration));
   if (typeOfTarget==1) {
     stroke(0);
     strokeWeight(3);
@@ -132,13 +132,13 @@ void displayTarget3() {
     bump.play();
     x2 = random(d2/2, width-d2/2);
     y2 = random(d2/2, height-d2/2);
-    timer3 = 180;
+    timer3 = timerDuration;
   }
   // draw timer ring to show time left
   stroke(255, 0, 0);
   strokeWeight(5);
   noFill();
-  arc(x2, y2, d2 + 20, d2 + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer3/180.0));
+  arc(x2, y2, d2 + 20, d2 + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer3/timerDuration));
   if (typeOfTarget ==1) {
     stroke(0);
     strokeWeight(3);
@@ -172,23 +172,28 @@ void resetVariables() {
   bull=0;
   mid=0;
   out=0;
-  lives=3;
-  timer1=180;
-  timer2=180;
-  timer3=180;
+  lives=5;
   total=0;
+  timer1 = timerDuration;
+  timer2 = timerDuration;
+  timer3 = timerDuration;
+  tvx = cos(angle);
+  tvy = sin(angle);
+
+  tvx1 = cos(angle1);
+  tvy1 = sin(angle1);
+
+  tvx2 = cos(angle2);
+  tvy2 = sin(angle2);
 }
 
 void randomizeTargets() {
-  d = 100;
   x = random(d/2, width-d/2);
   y = random(d/2, height-d/2);
 
-  d1 = 100;
   x1 = random(d1/2, width-d1/2);
   y1 = random(d1/2, height-d1/2);
 
-  d2 = 100;  // make sure d2 exists as a variable!
   x2 = random(d2/2, width-d2/2);
   y2 = random(d2/2, height-d2/2);
 }
