@@ -2,7 +2,19 @@ void game() {
 
   //background
   drawGradientRect(width/2, height/2, width, height, #BA8C63, #9D6C3C);
-
+if(player2) {
+fill(cyan,70);
+rect(0,0,width,height);
+textSize(50);
+fill(cyan);
+text("BLUE", width/2, 800);
+}else{
+fill(brightRed,50);
+rect(0,0,width,height);
+textSize(50);
+fill(brightRed);
+text("RED", width/2, 800);
+}
   for (int i=50; i<width-50; i+=100) {
     for (int j=0; j<height+100; j+=150) {
       fill(#855E42, 25);
@@ -50,14 +62,18 @@ void game() {
 
   if (popAlpha > 0) {
     popAlpha -= 2;
-    textSize(36);
-    if (overScore) fill(150, popAlpha);         
+    textSize(35);
+    if (overScore) fill(150, popAlpha);
     else if (player2) fill(brightRed, popAlpha);
     else fill(cyan, popAlpha);
-    if (popMultiplier == 1) {
+    if (popPoints==25) {
+      text("BULL! " + "\n"+ popPoints, popX, popY);
+    } else if (popPoints==50) {
+      text("BULLSEYE! " + "\n" + popPoints, popX, popY);
+    } else if (popMultiplier == 1) {
       text(popPoints, popX, popY);
     } else {
-      text(popPoints + " x" + popMultiplier + " = " + (popPoints*popMultiplier), popX, popY);
+      text((popPoints*popMultiplier) + "\n" + popPoints + "x" + popMultiplier, popX, popY);
     }
   }
   //score
@@ -84,12 +100,11 @@ void game() {
     int points=0;
     hasScored = true;
     float d = dist(394, 332, sX, sY);
-    println("d: " + d + " wedge: " + getWedgeScore(sX, sY));
     int basePoints = 0;
     int multiplier = 1;
     if (d >= 92 && d <= 106) multiplier = 3;
-    else if (d >= 166 && d <= 184) multiplier = 2;
-    if (d > 190) basePoints = 0;
+    else if (d >= 166 && d <= 185) multiplier = 2;
+    if (d > 185) basePoints = 0;
     else if (d <= 8) basePoints = 50;
     else if (d <= 20) basePoints = 25;
     else basePoints = getWedgeScore(sX, sY);
