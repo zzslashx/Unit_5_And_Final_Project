@@ -46,6 +46,10 @@ boolean player2=false;
 float popX, popY, popAlpha;
 int popPoints, popMultiplier;
 boolean overScore = false;
+float waveSize;
+float waveSpeed;
+float waveMax;
+boolean showWave;
 //TIMER VARS---------------------------------------------------------------------------------------
 int pauseFrame = -1;
 int popTimer;

@@ -181,37 +181,34 @@ void scoring() {
     if (overScore) fill(150, popAlpha);
     else if (!player2) fill(brightRed, popAlpha);
     else fill(cyan, popAlpha);
-    if (popPoints==25) {
-      text("BULL! " + "\n"+ popPoints, popX, popY);
-    } else if (popPoints==50) {
-      text("BULLSEYE! " + "\n" + popPoints, popX, popY);
-    } else if (popMultiplier == 1) {
+    if (popMultiplier == 1 && popPoints!=25 && popPoints !=50) {
       text(popPoints, popX, popY);
     }
     if (popTimer > 0) {
-
       textSize(55);
-
-      if (popMultiplier == 3) {
+      if (popPoints==25) {
+        text("BULL! ", popX, popY);
+      } else if (popPoints==50) {
+        text("BULLSEYE! ", popX, popY);
+      } else if (popMultiplier == 3) {
         text("TRIPLE!", popX, popY);
-        for (int i = 0; i < 10; i++) {
-          circle(popX + random(-50, 50),
-            popY + random(-50, 50),
-            5);
-        }
       } else if (popMultiplier == 2) {
         text("DOUBLE!", popX, popY);
-        for (int i = 0; i < 10; i++) {
-          circle(popX + random(-50, 50),
-            popY + random(-50, 50),
-            5);
-        }
       }
 
       popTimer--;
     } else {
-      if (popMultiplier>1) text((popPoints*popMultiplier) + "\n" + popPoints + "x" + popMultiplier, popX, popY);
+      textSize(60);
+      if (popPoints==25) text(popPoints, popX, popY);
+      if (popPoints==50) text(popPoints, popX, popY);
+      if (popMultiplier>1) { 
+      text(popPoints*popMultiplier, popX, popY);
+      textSize(35);
+      text(popPoints + "x" + popMultiplier, popX, popY + 40);
+      
+      }
     }
+    wave();
   }
 
   if (xSelected==true && ySelected==true && hasScored==false) {
@@ -243,8 +240,22 @@ void scoring() {
     }
     popX = sX;
     popY = sY;
-    popAlpha = 255+180;
-    popTimer = 90;
+    if (popMultiplier == 3) {
+      startWave(8, 450);
+    } else if (popMultiplier == 2) {
+      startWave(5, 360);
+    } else if (basePoints == 25) {
+      startWave(6, 330);
+    } else if (basePoints == 50) {
+      startWave(10, 525);
+    }
+    if (multiplier > 1 || basePoints==25 || basePoints==50) {
+      popAlpha = 435;
+      popTimer = 90;
+    } else {
+      popAlpha = 255;
+      popTimer = 0;
+    }
     overScore = false;
     if (!player2) redScore -= points;
     if (player2) blueScore -= points;
@@ -271,4 +282,30 @@ void textWithOutline(String text, int x, int y, color outline, color inside, flo
 
   fill(inside);
   text(text, x, y);
+}
+void wave() {
+  if (showWave) {
+    for (int i = 0; i < 5; i++) {
+      float d = waveSize - i * 30;
+
+      if (d > 0) {
+        noFill();
+        stroke(#FFD700, map(d, 0, waveMax, 200, 0));
+        strokeWeight(3);
+        circle(popX, popY, d);
+      }
+    }
+  }
+
+  waveSize += waveSpeed;
+
+  if (waveSize > waveMax) {
+    showWave = false;
+  }
+}
+void startWave(int speed, int maxSize) {
+  showWave = true;
+  waveSize = 0;
+  waveSpeed = speed;
+  waveMax = maxSize;
 }

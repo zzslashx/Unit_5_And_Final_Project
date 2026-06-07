@@ -60,11 +60,12 @@ void game() {
   scoring(); //simplified very long code
 
   //score
-  textSize(20);
+  textSize(25);
   fill(cyan);
-  text("Blue: " + blueScore, width/4*3, height-100);
+  textWithOutline("Blue: " + blueScore, 50, height-100,cyan,coolBlue,25);
   fill(brightRed);
-  text("Red: " + redScore, width/4*3, height-80);
+  textWithOutline("Red: " + redScore, 50, height-75,brightRed,darkRed,25);
+  
 
   if (xSelected == false) {
     sX += vx;
@@ -73,7 +74,7 @@ void game() {
     sY += vy;
     if (sY + 12 > 549 || sY - 12 < 117) vy = -vy;
   }
-  if (pauseFrame > 0 && frameCount >= pauseFrame && popAlpha<0) {
+  if (pauseFrame > 0 && frameCount >= pauseFrame && popAlpha<=0) {
     pauseFrame = -1;
     resetForNextPlayer();
   }
