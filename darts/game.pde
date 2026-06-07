@@ -2,19 +2,17 @@ void game() {
 
   //background
   drawGradientRect(width/2, height/2, width, height, #BA8C63, #9D6C3C);
-if(player2) {
-fill(cyan,70);
-rect(0,0,width,height);
-textSize(50);
-fill(cyan);
-text("BLUE", width/2, 800);
-}else{
-fill(brightRed,50);
-rect(0,0,width,height);
-textSize(50);
-fill(brightRed);
-text("RED", width/2, 800);
-}
+  if (player2) {
+    fill(cyan, 70);
+    rect(0, 0, width, height);
+
+    textWithOutline("BLUE'S TURN", width/2, 800, 255, cyan, 50);
+  } else {
+    fill(brightRed, 20);
+    rect(0, 0, width, height);
+
+    textWithOutline("RED'S TURN", width/2, 800, 255, brightRed, 50);
+  }
   for (int i=50; i<width-50; i+=100) {
     for (int j=0; j<height+100; j+=150) {
       fill(#855E42, 25);
@@ -59,23 +57,8 @@ text("RED", width/2, 800);
   line(sX, 590, sX, 610);
   line(69, sY, 91, sY);
 
+  scoring(); //simplified very long code
 
-  if (popAlpha > 0) {
-    popAlpha -= 2;
-    textSize(35);
-    if (overScore) fill(150, popAlpha);
-    else if (player2) fill(brightRed, popAlpha);
-    else fill(cyan, popAlpha);
-    if (popPoints==25) {
-      text("BULL! " + "\n"+ popPoints, popX, popY);
-    } else if (popPoints==50) {
-      text("BULLSEYE! " + "\n" + popPoints, popX, popY);
-    } else if (popMultiplier == 1) {
-      text(popPoints, popX, popY);
-    } else {
-      text((popPoints*popMultiplier) + "\n" + popPoints + "x" + popMultiplier, popX, popY);
-    }
-  }
   //score
   textSize(20);
   fill(cyan);
@@ -93,52 +76,6 @@ text("RED", width/2, 800);
   if (pauseFrame > 0 && frameCount >= pauseFrame) {
     pauseFrame = -1;
     resetForNextPlayer();
-  }
-
-
-  if (xSelected==true && ySelected==true && hasScored==false) {
-    int points=0;
-    hasScored = true;
-    float d = dist(394, 332, sX, sY);
-    int basePoints = 0;
-    int multiplier = 1;
-    if (d >= 92 && d <= 106) multiplier = 3;
-    else if (d >= 166 && d <= 185) multiplier = 2;
-    if (d > 185) basePoints = 0;
-    else if (d <= 8) basePoints = 50;
-    else if (d <= 20) basePoints = 25;
-    else basePoints = getWedgeScore(sX, sY);
-    points = basePoints * multiplier;
-    // popup text
-    if (d > 200) {
-      popPoints = 0;
-      popMultiplier = 1;
-    } else if (d <= 8) {
-      popPoints = 50;
-      popMultiplier = 1;
-    } else if (d <= 20) {
-      popPoints = 25;
-      popMultiplier = 1;
-    } else {
-      popPoints = basePoints;
-      popMultiplier = multiplier;
-    }
-    popX = sX;
-    popY = sY;
-    popAlpha = 255;
-    overScore = false;
-    if (player2) redScore -= points;
-    if (!player2) blueScore -= points;
-    if (redScore < 0) {
-      redScore += points;
-      overScore = true;
-    }
-    if (blueScore < 0) {
-      blueScore += points;
-      overScore = true;
-    }
-    if (blueScore == 0) mode = GAMEOVER;
-    if (redScore == 0) mode = GAMEOVER;
   }
 }
 

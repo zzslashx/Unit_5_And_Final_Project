@@ -12,12 +12,15 @@ void drawGradientRect(float cx, float cy, float w, float h, color c1, color c2) 
 
 
 void tactileRect(int x, int y, int w, int h) {
+  
   if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
-    stroke(255);
+    fill=255;
+    stroke(fill);
     fill(coolBlue);
   } else {
+    fill=0;
     fill(coolBlue);
-    stroke(0);
+    stroke(fill);
   }
 
   strokeWeight(5);
@@ -168,4 +171,82 @@ int getWedgeScore(float x, float y) {
   float wedgeSize = TWO_PI / 20;
   int index = (int)(angle / wedgeSize) % 20;
   return wedges[index];
+}
+
+void scoring() {
+
+  if (popAlpha > 0) {
+    popAlpha -= 2;
+    textSize(35);
+    if (overScore) fill(150, popAlpha);
+    else if (!player2) fill(brightRed, popAlpha);
+    else fill(cyan, popAlpha);
+    if (popPoints==25) {
+      text("BULL! " + "\n"+ popPoints, popX, popY);
+    } else if (popPoints==50) {
+      text("BULLSEYE! " + "\n" + popPoints, popX, popY);
+    } else if (popMultiplier == 1) {
+      text(popPoints, popX, popY);
+    } else {
+      text((popPoints*popMultiplier) + "\n" + popPoints + "x" + popMultiplier, popX, popY);
+    }
+  }
+
+  if (xSelected==true && ySelected==true && hasScored==false) {
+    int points=0;
+    hasScored = true;
+    float d = dist(394, 332, sX, sY);
+    int basePoints = 0;
+    int multiplier = 1;
+    if (d >= 92 && d <= 106) multiplier = 3;
+    else if (d >= 166 && d <= 185) multiplier = 2;
+    if (d > 185) basePoints = 0;
+    else if (d <= 8) basePoints = 50;
+    else if (d <= 20) basePoints = 25;
+    else basePoints = getWedgeScore(sX, sY);
+    points = basePoints * multiplier;
+    // popup text
+    if (d > 200) {
+      popPoints = 0;
+      popMultiplier = 1;
+    } else if (d <= 8) {
+      popPoints = 50;
+      popMultiplier = 1;
+    } else if (d <= 20) {
+      popPoints = 25;
+      popMultiplier = 1;
+    } else {
+      popPoints = basePoints;
+      popMultiplier = multiplier;
+    }
+    popX = sX;
+    popY = sY;
+    popAlpha = 255;
+    overScore = false;
+    if (!player2) redScore -= points;
+    if (player2) blueScore -= points;
+    if (redScore < 0) {
+      redScore += points;
+      overScore = true;
+    }
+    if (blueScore < 0) {
+      blueScore += points;
+      overScore = true;
+    }
+    if (blueScore == 0) mode = GAMEOVER;
+    if (redScore == 0) mode = GAMEOVER;
+  }
+}
+
+void textWithOutline(String text, int x, int y, color outline, color inside, float textSize){
+ fill(outline);
+  textSize(textSize);
+  text(text, x+1.5, y+1.5);
+  text(text, x-1.5, y+1.5);
+  text(text, x-1.5, y-1.5);
+  text(text, x+1.5, y-1.5);
+
+  fill(inside);
+  text(text, x, y);
+
 }

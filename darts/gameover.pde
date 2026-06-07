@@ -1,18 +1,16 @@
 void gameover() {
-  fill(0);
+
   if (redScore==0) {
-    drawGradientRect(width/2, height/2, width, height, brightRed, pink);
-    textSize(50);
-    text("RED WINS", width/2, height/2);
+
+    drawGradientRect(width/2, height/2, width, height, brightRed, darkRed);
+    textWithOutline("RED WINS", width/2, height/2, 255, brightRed, 50);
   }
   if (blueScore==0) {
     drawGradientRect(width/2, height/2, width, height, cyan, coolBlue);
-    textSize(50);
-    text("BLUE WINS", width/2, height/2);
+    textWithOutline("BLUE WINS", width/2, height/2, 255, cyan, 50);
   }
 }
 
 void gameoverClicks() {
   mode=INTRO;
-  
 }

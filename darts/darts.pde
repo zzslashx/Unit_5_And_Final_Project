@@ -22,6 +22,7 @@ color cyan        = #00FFFF;
 color warmBlue    = #180A8F;
 color coolBlue    = #0055A4;
 color pink        = #FF69B4;
+color darkRed = color(139, 0, 0);
 //Earth Tones
 color brightRed   = #FF0000;
 color brightOrange= #FF5F1F;
@@ -29,6 +30,8 @@ color warmGreen   = #7BB661;
 color coolGreen   = #00A86B;
 //black
 color black  = #000000;
+//stroke
+color fill = 255;
 
 //SELECTOR VARIABLES---------------------------------------------------------------------------------------
 float sX, sY, vx, vy;

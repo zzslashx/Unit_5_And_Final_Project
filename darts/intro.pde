@@ -3,12 +3,21 @@ void intro() {
   // background
   drawGradientRect(width/2, height/2, width, height, #BA8C63, 0);
 
+  //dart board decoration
+  pushMatrix();
+  scale(0.7);
+  translate(width/2-200, -320);
+  drawDartBoard();
+  popMatrix();
+
+
   // text
-  fill(255);
-  textSize(90);
-  text("DARTS", width/2, height/4);
+  textWithOutline("DARTS", width/2, height/4+50, 255, #BA8C63, 150);
+  textWithOutline("For Two Players!", width/2, height/4+150, #BA8C63, 0, 45);
 
 
+  //information:
+  textWithOutline("Take turns throwing darts and be the first to score 301 points. \n The last dart must hit the exact score. \n \n The middle ring gives tripple the score and the outer ring gives double.", width/2, height/2+50, #BA8C63, 255, 25);
 
   // web decoration
   stroke(255, 255, 255, 30);
@@ -21,17 +30,20 @@ void intro() {
     line(0, 0, width, i);
   }
 
+
   // play button
   tactileRect(width/2-100, height/2 + height/4 - 75/2, 200, 75);
-  fill(0);
-  textSize(45);
-  text("START", (width/2), height/2 + height/4-5);
+
+  textWithOutline("START", width/2, height/2 + height/4-5, fill, #BA8C63, 50);
 }
 
 void introClicks() {
   if (mouseX > width/2-100 && mouseX < width/2-100+200 && mouseY > height/2 + height/4 - 75/2 && mouseY < height/2 + height/4 - 75/2+75) {
     mode=GAME;
-    resetForNextPlayer();
+    int i=0;
+    while (i<random(5)) {
+      resetForNextPlayer();
+    }
     redScore=301;
     blueScore=301;
   }
