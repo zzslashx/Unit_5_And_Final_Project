@@ -48,6 +48,8 @@ int popPoints, popMultiplier;
 boolean overScore = false;
 //TIMER VARS---------------------------------------------------------------------------------------
 int pauseFrame = -1;
+int popTimer;
+
 
 void setup() {
   size(750, 950, FX2D);
@@ -69,8 +71,6 @@ void draw() {
     intro();
   } else if (mode == GAME) {
     game();
-  } else if (mode == PAUSE) {
-    pause();
   } else if (mode == GAMEOVER) {
     gameover();
   } else {

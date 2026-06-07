@@ -73,7 +73,7 @@ void game() {
     sY += vy;
     if (sY + 12 > 549 || sY - 12 < 117) vy = -vy;
   }
-  if (pauseFrame > 0 && frameCount >= pauseFrame) {
+  if (pauseFrame > 0 && frameCount >= pauseFrame && popAlpha<0) {
     pauseFrame = -1;
     resetForNextPlayer();
   }

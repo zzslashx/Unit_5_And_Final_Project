@@ -12,7 +12,7 @@ void drawGradientRect(float cx, float cy, float w, float h, color c1, color c2) 
 
 
 void tactileRect(int x, int y, int w, int h) {
-  
+
   if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
     fill=255;
     stroke(fill);
@@ -187,8 +187,30 @@ void scoring() {
       text("BULLSEYE! " + "\n" + popPoints, popX, popY);
     } else if (popMultiplier == 1) {
       text(popPoints, popX, popY);
+    }
+    if (popTimer > 0) {
+
+      textSize(55);
+
+      if (popMultiplier == 3) {
+        text("TRIPLE!", popX, popY);
+        for (int i = 0; i < 10; i++) {
+          circle(popX + random(-50, 50),
+            popY + random(-50, 50),
+            5);
+        }
+      } else if (popMultiplier == 2) {
+        text("DOUBLE!", popX, popY);
+        for (int i = 0; i < 10; i++) {
+          circle(popX + random(-50, 50),
+            popY + random(-50, 50),
+            5);
+        }
+      }
+
+      popTimer--;
     } else {
-      text((popPoints*popMultiplier) + "\n" + popPoints + "x" + popMultiplier, popX, popY);
+      if (popMultiplier>1) text((popPoints*popMultiplier) + "\n" + popPoints + "x" + popMultiplier, popX, popY);
     }
   }
 
@@ -221,7 +243,8 @@ void scoring() {
     }
     popX = sX;
     popY = sY;
-    popAlpha = 255;
+    popAlpha = 255+180;
+    popTimer = 90;
     overScore = false;
     if (!player2) redScore -= points;
     if (player2) blueScore -= points;
@@ -238,8 +261,8 @@ void scoring() {
   }
 }
 
-void textWithOutline(String text, int x, int y, color outline, color inside, float textSize){
- fill(outline);
+void textWithOutline(String text, int x, int y, color outline, color inside, float textSize) {
+  fill(outline);
   textSize(textSize);
   text(text, x+1.5, y+1.5);
   text(text, x-1.5, y+1.5);
@@ -248,5 +271,4 @@ void textWithOutline(String text, int x, int y, color outline, color inside, flo
 
   fill(inside);
   text(text, x, y);
-
 }
