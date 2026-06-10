@@ -1,15 +1,15 @@
 void intro() {
 
-  // background
-  drawGradientRect(width/2, height/2, width, height, #BA8C63, 0);
+  //// background
+  //drawGradientRect(width/2, height/2, width, height, #BA8C63, 0);
 
-  //dart board decoration
-  pushMatrix();
-  scale(0.7);
-  translate(width/2-200, -320);
-  drawDartBoard();
-  popMatrix();
-
+  ////dart board decoration
+  //pushMatrix();
+  //scale(0.7);
+  //translate(width/2-200, -320);
+  //drawDartBoard();
+  //popMatrix();
+image(introScreen,0,0,width,height);
 
   // text
   textWithOutline("DARTS", width/2, height/4+50, 255, #BA8C63, 150);

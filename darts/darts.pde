@@ -2,6 +2,10 @@
 //Programming 11
 //Cheng Cheng
 
+
+PImage blue;
+PImage red;
+PImage introScreen;
 //import
 import processing.javafx.*;
 
@@ -68,6 +72,10 @@ void setup() {
   redScore=301;
   blueScore=301;
   frameRate(60);
+  red=loadImage("red.png");
+  blue=loadImage("blue.png");
+  introScreen=loadImage("introScreen.png");
+  
 }
 
 void draw() {

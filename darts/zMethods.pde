@@ -27,20 +27,20 @@ void tactileRect(int x, int y, int w, int h) {
   rect(x, y, w, h, 50);
 }
 
-void drawWedge(float x, float y, float r1, float r2, float startAngle, float angleAdded, color colour) {
-  stroke(255);
-  strokeWeight(5);
-  fill(colour);
-  arc(x, y, r2*2, r2*2, startAngle, startAngle+angleAdded, PIE);
-  fill(#181A18);
-  arc(x, y, r1*2, r1*2, startAngle, startAngle+angleAdded, PIE);
-}
+//void drawWedge(float x, float y, float r1, float r2, float startAngle, float angleAdded, color colour) {
+//  stroke(255);
+//  strokeWeight(5);
+//  fill(colour);
+//  arc(x, y, r2*2, r2*2, startAngle, startAngle+angleAdded, PIE);
+//  fill(#181A18);
+//  arc(x, y, r1*2, r1*2, startAngle, startAngle+angleAdded, PIE);
+//}
 
-void drawTriangle(int x, int y, int x2, int y2) {
-  //just to make it faster to type(time saver)
-  strokeWeight(5);
-  triangle(x, y, x2, y2, width/2, height/3);
-}
+//void drawTriangle(int x, int y, int x2, int y2) {
+//  //just to make it faster to type(time saver)
+//  strokeWeight(5);
+//  triangle(x, y, x2, y2, width/2, height/3);
+//}
 
 void resetForNextPlayer() {
   xSelected=false;
@@ -54,114 +54,114 @@ void resetForNextPlayer() {
   overScore=false;
 }
 
-void drawDartBoard() {
+//void drawDartBoard() {
 
-  //darts board
-  fill(#181A18);
-  circle(width/2, height/3, 615);
+//  //darts board
+//  fill(#181A18);
+//  circle(width/2, height/3, 615);
 
-  for (int i = 0; i < 20; i++) {
-    float a = (-HALF_PI - PI/20) + i * (TWO_PI/20);
-    color c;
-    if (i % 2 == 0) {
-      c = color(#935B98);
-    } else {
-      c = color(#22C997);
-    }
-    drawWedge(width/2, height/3, 240, 260, a, TWO_PI/20, c);
-    drawWedge(width/2, height/3, 130, 150, a, TWO_PI/20, c);
-  }
+//  for (int i = 0; i < 20; i++) {
+//    float a = (-HALF_PI - PI/20) + i * (TWO_PI/20);
+//    color c;
+//    if (i % 2 == 0) {
+//      c = color(#935B98);
+//    } else {
+//      c = color(#22C997);
+//    }
+//    drawWedge(width/2, height/3, 240, 260, a, TWO_PI/20, c);
+//    drawWedge(width/2, height/3, 130, 150, a, TWO_PI/20, c);
+//  }
 
-  stroke(255);
-  strokeWeight(5);
-  fill(#BA8C63);
+//  stroke(255);
+//  strokeWeight(5);
+//  fill(#BA8C63);
 
-  line(418, 575, width/2, height/3);
-  line(337, 576, width/2, height/3);
-  drawTriangle(357, 187, 391, 187);
+//  line(418, 575, width/2, height/3);
+//  line(337, 576, width/2, height/3);
+//  drawTriangle(357, 187, 391, 187);
 
-  line(260, 550, width/2, height/3);
-  line(190, 500, width/2, height/3);
-  drawTriangle(437, 202, 465, 222);
+//  line(260, 550, width/2, height/3);
+//  line(190, 500, width/2, height/3);
+//  drawTriangle(437, 202, 465, 222);
 
-  line(145, 438, width/2, height/3);
-  line(120, 358, width/2, height/3);
-  drawTriangle(493, 262, 503, 291);
+//  line(145, 438, width/2, height/3);
+//  line(120, 358, width/2, height/3);
+//  drawTriangle(493, 262, 503, 291);
 
-  line(118, 279, width/2, height/3);
-  line(143, 202, width/2, height/3);
-  drawTriangle(503, 340, 493, 371);
+//  line(118, 279, width/2, height/3);
+//  line(143, 202, width/2, height/3);
+//  drawTriangle(503, 340, 493, 371);
 
-  line(191, 136, width/2, height/3);
-  line(255, 87, width/2, height/3);
-  drawTriangle(468, 410, 438, 431);
+//  line(191, 136, width/2, height/3);
+//  line(255, 87, width/2, height/3);
+//  drawTriangle(468, 410, 438, 431);
 
-  line(334, 64, width/2, height/3);
-  line(414, 62, width/2, height/3);
-  drawTriangle(394, 445, 361, 446);
+//  line(334, 64, width/2, height/3);
+//  line(414, 62, width/2, height/3);
+//  drawTriangle(394, 445, 361, 446);
 
-  line(490, 87, width/2, height/3);
-  line(557, 134, width/2, height/3);
-  drawTriangle(316, 431, 286, 409);
+//  line(490, 87, width/2, height/3);
+//  line(557, 134, width/2, height/3);
+//  drawTriangle(316, 431, 286, 409);
 
-  line(607, 200, width/2, height/3);
-  line(632, 272, width/2, height/3);
-  drawTriangle(258, 374, 247, 341);
+//  line(607, 200, width/2, height/3);
+//  line(632, 272, width/2, height/3);
+//  drawTriangle(258, 374, 247, 341);
 
-  line(633, 356, width/2, height/3);
-  line(607, 432, width/2, height/3);
-  drawTriangle(247, 295, 257, 261);
+//  line(633, 356, width/2, height/3);
+//  line(607, 432, width/2, height/3);
+//  drawTriangle(247, 295, 257, 261);
 
-  line(561, 497, width/2, height/3);
-  line(494, 548, width/2, height/3);
-  drawTriangle(284, 222, 312, 203);
+//  line(561, 497, width/2, height/3);
+//  line(494, 548, width/2, height/3);
+//  drawTriangle(284, 222, 312, 203);
 
-  quad(340, 76, 409, 76, 395, 167, 354, 168);
-  quad(486, 103, 446, 183, 479, 207, 542, 144);
-  quad(610, 272, 522, 288, 512, 253, 591, 213);
-  quad(510, 380, 590, 420, 612, 356, 523, 342);
-  quad(446, 448, 487, 528, 545, 486, 480, 423);
-  quad(357, 465, 396, 465, 411, 553, 345, 553);
-  quad(266, 530, 306, 449, 272, 425, 209, 489);
-  quad(162, 425, 241, 384, 228, 345, 140, 360);
-  quad(139, 279, 158, 214, 239, 254, 227, 291);
-  quad(303, 186, 261, 105, 206, 146, 270, 209);
+//  quad(340, 76, 409, 76, 395, 167, 354, 168);
+//  quad(486, 103, 446, 183, 479, 207, 542, 144);
+//  quad(610, 272, 522, 288, 512, 253, 591, 213);
+//  quad(510, 380, 590, 420, 612, 356, 523, 342);
+//  quad(446, 448, 487, 528, 545, 486, 480, 423);
+//  quad(357, 465, 396, 465, 411, 553, 345, 553);
+//  quad(266, 530, 306, 449, 272, 425, 209, 489);
+//  quad(162, 425, 241, 384, 228, 345, 140, 360);
+//  quad(139, 279, 158, 214, 239, 254, 227, 291);
+//  quad(303, 186, 261, 105, 206, 146, 270, 209);
 
-  textSize(32);
-  fill(255);
-  textAlign(CENTER, CENTER);
-  text("20", 374, 30);
-  text("1", 460, 45);
-  text("5", 289, 47);
-  text("12", 198, 86);
-  text("9", 139, 155);
-  text("14", 99, 233);
-  text("11", 89, 318);
-  text("8", 102, 405);
-  text("16", 137, 479);
-  text("7", 207, 546);
-  text("19", 286, 586);
-  text("3", 377, 602);
-  text("17", 462, 586);
-  text("2", 542, 546);
-  text("15", 605, 483);
-  text("10", 641, 400);
-  text("6", 656, 314);
-  text("13", 642, 231);
-  text("4", 605, 152);
-  text("18", 538, 80);
-  noFill();
-  strokeWeight(6.7);
-  circle(width/2, height/3, 520);
+//  textSize(32);
+//  fill(255);
+//  textAlign(CENTER, CENTER);
+//  text("20", 374, 30);
+//  text("1", 460, 45);
+//  text("5", 289, 47);
+//  text("12", 198, 86);
+//  text("9", 139, 155);
+//  text("14", 99, 233);
+//  text("11", 89, 318);
+//  text("8", 102, 405);
+//  text("16", 137, 479);
+//  text("7", 207, 546);
+//  text("19", 286, 586);
+//  text("3", 377, 602);
+//  text("17", 462, 586);
+//  text("2", 542, 546);
+//  text("15", 605, 483);
+//  text("10", 641, 400);
+//  text("6", 656, 314);
+//  text("13", 642, 231);
+//  text("4", 605, 152);
+//  text("18", 538, 80);
+//  noFill();
+//  strokeWeight(6.7);
+//  circle(width/2, height/3, 520);
 
-  //bullseye
-  stroke(0);
-  fill(255);
-  circle(width/2, height/3, 55);
-  noStroke();
-  fill(#E72D24);
-  circle(width/2, height/3, 25);
-}
+//  //bullseye
+//  stroke(0);
+//  fill(255);
+//  circle(width/2, height/3, 55);
+//  noStroke();
+//  fill(#E72D24);
+//  circle(width/2, height/3, 25);
+//}
 
 int getWedgeScore(float x, float y) {
   int[] wedges = {20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5};
@@ -201,11 +201,10 @@ void scoring() {
       textSize(60);
       if (popPoints==25) text(popPoints, popX, popY);
       if (popPoints==50) text(popPoints, popX, popY);
-      if (popMultiplier>1) { 
-      text(popPoints*popMultiplier, popX, popY);
-      textSize(35);
-      text(popPoints + "x" + popMultiplier, popX, popY + 40);
-      
+      if (popMultiplier>1) {
+        text(popPoints*popMultiplier, popX, popY);
+        textSize(35);
+        text(popPoints + "x" + popMultiplier, popX, popY + 40);
       }
     }
     wave();
