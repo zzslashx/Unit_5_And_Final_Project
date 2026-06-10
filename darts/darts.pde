@@ -71,11 +71,10 @@ void setup() {
   vy=-ballSpeed;
   redScore=301;
   blueScore=301;
-  frameRate(60);
+  //frameRate(1);
   red=loadImage("red.png");
   blue=loadImage("blue.png");
   introScreen=loadImage("introScreen.png");
-  
 }
 
 void draw() {

@@ -5,12 +5,12 @@ void game() {
   if (player2) {
     //fill(cyan, 70);
     //rect(0, 0, width, height);
-image(blue,0,0,width,height);
+    image(blue, 0, 0, width, height);
     textWithOutline("BLUE'S TURN", width/2, 800, 255, cyan, 50);
   } else {
     //fill(brightRed, 20);
     //rect(0, 0, width, height);
-image(red,0,0,width,height);
+    image(red, 0, 0, width, height);
     textWithOutline("RED'S TURN", width/2, 800, 255, brightRed, 50);
   }
   //for (int i=50; i<width-50; i+=100) {
@@ -62,10 +62,10 @@ image(red,0,0,width,height);
   //score
   textSize(25);
   fill(cyan);
-  textWithOutline("Blue: " + blueScore, 50, height-100,cyan,coolBlue,25);
+  textWithOutline("Blue: " + blueScore, 50, height-100, cyan, coolBlue, 25);
   fill(brightRed);
-  textWithOutline("Red: " + redScore, 50, height-75,brightRed,darkRed,25);
-  
+  textWithOutline("Red: " + redScore, 50, height-75, brightRed, darkRed, 25);
+
 
   if (xSelected == false) {
     sX += vx;
