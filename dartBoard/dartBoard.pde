@@ -126,6 +126,53 @@ void drawTriangle(int x, int y, int x2, int y2) {
 void setup() {
   size(750, 950);
 }
+color warmYellow  = #FFDF00;
+color coolYellow  = #F1FF5E;
+color white       = #F9F6F0;
+color cyan        = #00FFFF;
+color warmBlue    = #180A8F;
+color coolBlue    = #0055A4;
+color pink        = #FF69B4;
+color darkRed = color(139, 0, 0);
+//Earth Tones
+color brightRed   = #FF0000;
+color brightOrange= #FF5F1F;
+color warmGreen   = #7BB661;
+color coolGreen   = #00A86B;
+//black
+color black  = #000000;
 void draw() {
+
+  drawGradientRect(width/2, height/2, width, height, #BA8C63, #9D6C3C);
+  fill(brightRed, 20);
+  rect(0, 0, width, height);
+  for (int i=50; i<width-50; i+=100) {
+    for (int j=0; j<height+100; j+=150) {
+      fill(#855E42, 25);
+      noStroke();
+      rect(i, j, 50, 200);
+    }
+  }
+    pushMatrix();
+  scale(0.7);
+  translate(width/4, height/6);
   drawDartBoard();
+  popMatrix();
+}
+void keyPressed() {
+  if (key == 's' || key == 'S') {
+    save("red.png"); // Saves a single image to the sketch folder
+  }
+}
+
+void drawGradientRect(float cx, float cy, float w, float h, color c1, color c2) {
+  noStroke();
+  float x = cx - w / 2.0;  //math !! to make center top left
+  float y = cy - h / 2.0;
+  for (int i = 0; i < h; i++) {
+    float t = map(i, 0, h, 0, 1);
+    color c = lerpColor(c1, c2, t);
+    stroke(c);
+    line(x, y + i, x + w, y + i);
+  }
 }
