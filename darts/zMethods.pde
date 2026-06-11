@@ -141,8 +141,9 @@ void scoring() {
 
 
 int getWedgeScore(float x, float y) {
-  int[] wedges = {20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5};
+  int[] wedges = {20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5 };
   float angle = atan2(y - 332, x - 394);
+  angle += HALF_PI + (PI/20);
   angle = (angle + TWO_PI) % TWO_PI;
   int index = int(angle / (TWO_PI / 20));
   return wedges[index];
@@ -159,6 +160,7 @@ void textWithOutline(String text, int x, int y, color outline, color inside, flo
   fill(inside);
   text(text, x, y);
 }
+
 void wave() {
   if (showWave) {
     for (int i = 0; i < 5; i++) {
@@ -179,6 +181,7 @@ void wave() {
     showWave = false;
   }
 }
+
 void startWave(int speed, int maxSize) {
   showWave = true;
   waveSize = 0;

@@ -1,4 +1,14 @@
+void textWithOutline(String text, int x, int y, color outline, color inside, float textSize) {
+  fill(outline);
+  textSize(textSize);
+  text(text, x+1.5, y+1.5);
+  text(text, x-1.5, y+1.5);
+  text(text, x-1.5, y-1.5);
+  text(text, x+1.5, y-1.5);
 
+  fill(inside);
+  text(text, x, y);
+}
 void drawDartBoard() {
 
   //darts board
@@ -143,25 +153,24 @@ color coolGreen   = #00A86B;
 color black  = #000000;
 void draw() {
 
-  drawGradientRect(width/2, height/2, width, height, #BA8C63, #9D6C3C);
-  fill(brightRed, 20);
-  rect(0, 0, width, height);
-  for (int i=50; i<width-50; i+=100) {
-    for (int j=0; j<height+100; j+=150) {
-      fill(#855E42, 25);
-      noStroke();
-      rect(i, j, 50, 200);
-    }
-  }
-    pushMatrix();
+  // background
+  drawGradientRect(width/2, height/2, width, height, #BA8C63, 0);
+
+  //dart board decoration
+  pushMatrix();
   scale(0.7);
-  translate(width/4, height/6);
+  translate(width/2-200, -320);
   drawDartBoard();
   popMatrix();
+
+
+ 
+
+
 }
 void keyPressed() {
   if (key == 's' || key == 'S') {
-    save("red.png"); // Saves a single image to the sketch folder
+    save("introScreen.png"); // Saves a single image to the sketch folder
   }
 }
 

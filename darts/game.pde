@@ -62,9 +62,9 @@ void game() {
   //score
   textSize(25);
   fill(cyan);
-  textWithOutline("Blue: " + blueScore, 50, height-100, cyan, coolBlue, 25);
+  textWithOutline("Blue: " + blueScore, 65, height-100, cyan, coolBlue, 25);
   fill(brightRed);
-  textWithOutline("Red: " + redScore, 50, height-75, brightRed, darkRed, 25);
+  textWithOutline("Red: " + redScore, 65, height-75, brightRed, darkRed, 25);
 
 
   if (xSelected == false) {
@@ -76,13 +76,13 @@ void game() {
   }
   if (pauseFrame > 0 && frameCount >= pauseFrame && popAlpha<=0) {
     pauseFrame = -1;
-    resetForNextPlayer();
+    if (redScore==0 || blueScore==0) mode=GAMEOVER;
+    else resetForNextPlayer();
   }
 }
 
 
 void gameClicks() {
-  println(mouseX, mouseY);
   if (xSelected == false) {
     xSelected = true;
     vx = 0;

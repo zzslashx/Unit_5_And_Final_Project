@@ -32,6 +32,7 @@ color brightRed   = #FF0000;
 color brightOrange= #FF5F1F;
 color warmGreen   = #7BB661;
 color coolGreen   = #00A86B;
+color gold = #BA8C63;
 //black
 color black  = #000000;
 //stroke
@@ -43,6 +44,7 @@ float ballSpeed;
 boolean xSelected, ySelected;
 
 //SCORE VARS---------------------------------------------------------------------------------------
+int startScore;
 int blueScore;
 int redScore;
 boolean hasScored = false;
@@ -64,13 +66,14 @@ void setup() {
   textAlign(CENTER, CENTER);
   xSelected=false;
   ySelected=false;
+  startScore=301;
   sX = 394;
   sY = 333;
   ballSpeed=5;
   vx=ballSpeed;
   vy=-ballSpeed;
-  redScore=301;
-  blueScore=301;
+  redScore=startScore;
+  blueScore=startScore;
   //frameRate(1);
   red=loadImage("red.png");
   blue=loadImage("blue.png");

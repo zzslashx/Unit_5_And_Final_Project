@@ -9,11 +9,11 @@ void intro() {
   //translate(width/2-200, -320);
   //drawDartBoard();
   //popMatrix();
-image(introScreen,0,0,width,height);
+  image(introScreen, 0, 0, width, height);
 
   // text
-  textWithOutline("DARTS", width/2, height/4+50, 255, #BA8C63, 150);
-  textWithOutline("For Two Players!", width/2, height/4+150, #BA8C63, 0, 45);
+  textWithOutline("DARTS", width/2, height/4+50, 255, gold, 150);
+  textWithOutline("For Two Players!", width/2, height/4+150, gold, 0, 45);
 
 
   //information:
@@ -34,7 +34,7 @@ image(introScreen,0,0,width,height);
   // play button
   tactileRect(width/2-100, height/2 + height/4 - 75/2, 200, 75);
 
-  textWithOutline("START", width/2, height/2 + height/4-5, fill, #BA8C63, 50);
+  textWithOutline("START", width/2, height/2 + height/4-5, fill, gold, 50);
 }
 
 void introClicks() {
@@ -44,7 +44,7 @@ void introClicks() {
     while (i<random(5)) {
       resetForNextPlayer();
     }
-    redScore=301;
-    blueScore=301;
+    redScore=startScore;
+    blueScore=startScore;
   }
 }
