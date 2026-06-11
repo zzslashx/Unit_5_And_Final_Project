@@ -27,20 +27,7 @@ void tactileRect(int x, int y, int w, int h) {
   rect(x, y, w, h, 50);
 }
 
-//void drawWedge(float x, float y, float r1, float r2, float startAngle, float angleAdded, color colour) {
-//  stroke(255);
-//  strokeWeight(5);
-//  fill(colour);
-//  arc(x, y, r2*2, r2*2, startAngle, startAngle+angleAdded, PIE);
-//  fill(#181A18);
-//  arc(x, y, r1*2, r1*2, startAngle, startAngle+angleAdded, PIE);
-//}
 
-//void drawTriangle(int x, int y, int x2, int y2) {
-//  //just to make it faster to type(time saver)
-//  strokeWeight(5);
-//  triangle(x, y, x2, y2, width/2, height/3);
-//}
 
 void resetForNextPlayer() {
   xSelected=false;
@@ -52,7 +39,179 @@ void resetForNextPlayer() {
   hasScored = false;
   player2 = !player2;
   overScore=false;
+  popTimer=0;
+  popAlpha=0;
 }
+
+void scoring() {
+
+  if (popAlpha > 0) {
+    popAlpha -= 2;
+    textSize(35);
+    if (overScore) fill(150, popAlpha);
+    else if (!player2) fill(brightRed, popAlpha);
+    else fill(cyan, popAlpha);
+    if (popMultiplier == 1 && popPoints!=25 && popPoints !=50) {
+      text(popPoints, popX, popY);
+    }
+    if (popTimer > 0) {
+      textSize(55);
+      if (popPoints==25) {
+        text("BULL! ", popX, popY);
+      } else if (popPoints==50) {
+        text("BULLSEYE! ", popX, popY);
+      } else if (popMultiplier == 3) {
+        text("TRIPLE!", popX, popY);
+      } else if (popMultiplier == 2) {
+        text("DOUBLE!", popX, popY);
+      }
+
+      popTimer--;
+    } else {
+      textSize(60);
+      if (popPoints==25) text(popPoints, popX, popY);
+      if (popPoints==50) text(popPoints, popX, popY);
+      if (popMultiplier>1) {
+        text(popPoints*popMultiplier, popX, popY);
+        textSize(35);
+        text(popPoints + "x" + popMultiplier, popX, popY + 40);
+      }
+    }
+    wave();
+  }
+
+  if (xSelected==true && ySelected==true && hasScored==false) {
+    int points=0;
+    hasScored = true;
+    float d = dist(394, 332, sX, sY);
+    int basePoints = 0;
+    int multiplier = 1;
+    if (d >= 92 && d <= 106) multiplier = 3;
+    else if (d >= 166 && d <= 185) multiplier = 2;
+    if (d > 185) basePoints = 0;
+    else if (d <= 8) basePoints = 50;
+    else if (d <= 20) basePoints = 25;
+    else basePoints = getWedgeScore(sX, sY);
+    points = basePoints * multiplier;
+    // popup text
+    if (d > 200) {
+      popPoints = 0;
+      popMultiplier = 1;
+    } else if (d <= 8) {
+      popPoints = 50;
+      popMultiplier = 1;
+    } else if (d <= 20) {
+      popPoints = 25;
+      popMultiplier = 1;
+    } else {
+      popPoints = basePoints;
+      popMultiplier = multiplier;
+    }
+    popX = sX;
+    popY = sY;
+    if (popMultiplier == 3) {
+      startWave(8, 450);
+    } else if (popMultiplier == 2) {
+      startWave(5, 360);
+    } else if (basePoints == 25) {
+      startWave(6, 330);
+    } else if (basePoints == 50) {
+      startWave(10, 525);
+    }
+    if (multiplier > 1 || basePoints==25 || basePoints==50) {
+      popAlpha = 435;
+      popTimer = 90;
+    } else {
+      popAlpha = 255;
+      popTimer = 0;
+    }
+    overScore = false;
+    if (!player2) redScore -= points;
+    if (player2) blueScore -= points;
+    if (redScore < 0) {
+      redScore += points;
+      overScore = true;
+    }
+    if (blueScore < 0) {
+      blueScore += points;
+      overScore = true;
+    }
+  }
+}
+
+
+int getWedgeScore(float x, float y) {
+  int[] wedges = {20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5};
+  float angle = atan2(y - 332, x - 394);
+  angle = (angle + TWO_PI) % TWO_PI;
+  int index = int(angle / (TWO_PI / 20));
+  return wedges[index];
+}
+
+void textWithOutline(String text, int x, int y, color outline, color inside, float textSize) {
+  fill(outline);
+  textSize(textSize);
+  text(text, x+1.5, y+1.5);
+  text(text, x-1.5, y+1.5);
+  text(text, x-1.5, y-1.5);
+  text(text, x+1.5, y-1.5);
+
+  fill(inside);
+  text(text, x, y);
+}
+void wave() {
+  if (showWave) {
+    for (int i = 0; i < 5; i++) {
+      float d = waveSize - i * 30;
+
+      if (d > 0) {
+        noFill();
+        stroke(#FFD700, map(d, 0, waveMax, 200, 0));
+        strokeWeight(3);
+        circle(popX, popY, d);
+      }
+    }
+  }
+
+  waveSize += waveSpeed;
+
+  if (waveSize > waveMax) {
+    showWave = false;
+  }
+}
+void startWave(int speed, int maxSize) {
+  showWave = true;
+  waveSize = 0;
+  waveSpeed = speed;
+  waveMax = maxSize;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //void drawDartBoard() {
 
@@ -162,149 +321,17 @@ void resetForNextPlayer() {
 //  fill(#E72D24);
 //  circle(width/2, height/3, 25);
 //}
+//void drawWedge(float x, float y, float r1, float r2, float startAngle, float angleAdded, color colour) {
+//  stroke(255);
+//  strokeWeight(5);
+//  fill(colour);
+//  arc(x, y, r2*2, r2*2, startAngle, startAngle+angleAdded, PIE);
+//  fill(#181A18);
+//  arc(x, y, r1*2, r1*2, startAngle, startAngle+angleAdded, PIE);
+//}
 
-int getWedgeScore(float x, float y) {
-  int[] wedges = {20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5};
-  float angle = atan2(y - 332, x - 394);
-  angle -= (-HALF_PI - PI/20);
-  if (angle < 0) angle += TWO_PI;
-  float wedgeSize = TWO_PI / 20;
-  int index = (int)(angle / wedgeSize) % 20;
-  return wedges[index];
-}
-
-void scoring() {
-
-  if (popAlpha > 0) {
-    popAlpha -= 2;
-    textSize(35);
-    if (overScore) fill(150, popAlpha);
-    else if (!player2) fill(brightRed, popAlpha);
-    else fill(cyan, popAlpha);
-    if (popMultiplier == 1 && popPoints!=25 && popPoints !=50) {
-      text(popPoints, popX, popY);
-    }
-    if (popTimer > 0) {
-      textSize(55);
-      if (popPoints==25) {
-        text("BULL! ", popX, popY);
-      } else if (popPoints==50) {
-        text("BULLSEYE! ", popX, popY);
-      } else if (popMultiplier == 3) {
-        text("TRIPLE!", popX, popY);
-      } else if (popMultiplier == 2) {
-        text("DOUBLE!", popX, popY);
-      }
-
-      popTimer--;
-    } else {
-      textSize(60);
-      if (popPoints==25) text(popPoints, popX, popY);
-      if (popPoints==50) text(popPoints, popX, popY);
-      if (popMultiplier>1) {
-        text(popPoints*popMultiplier, popX, popY);
-        textSize(35);
-        text(popPoints + "x" + popMultiplier, popX, popY + 40);
-      }
-    }
-    wave();
-  }
-
-  if (xSelected==true && ySelected==true && hasScored==false) {
-    int points=0;
-    hasScored = true;
-    float d = dist(394, 332, sX, sY);
-    int basePoints = 0;
-    int multiplier = 1;
-    if (d >= 92 && d <= 106) multiplier = 3;
-    else if (d >= 166 && d <= 185) multiplier = 2;
-    if (d > 185) basePoints = 0;
-    else if (d <= 8) basePoints = 50;
-    else if (d <= 20) basePoints = 25;
-    else basePoints = getWedgeScore(sX, sY);
-    points = basePoints * multiplier;
-    // popup text
-    if (d > 200) {
-      popPoints = 0;
-      popMultiplier = 1;
-    } else if (d <= 8) {
-      popPoints = 50;
-      popMultiplier = 1;
-    } else if (d <= 20) {
-      popPoints = 25;
-      popMultiplier = 1;
-    } else {
-      popPoints = basePoints;
-      popMultiplier = multiplier;
-    }
-    popX = sX;
-    popY = sY;
-    if (popMultiplier == 3) {
-      startWave(8, 450);
-    } else if (popMultiplier == 2) {
-      startWave(5, 360);
-    } else if (basePoints == 25) {
-      startWave(6, 330);
-    } else if (basePoints == 50) {
-      startWave(10, 525);
-    }
-    if (multiplier > 1 || basePoints==25 || basePoints==50) {
-      popAlpha = 435;
-      popTimer = 90;
-    } else {
-      popAlpha = 255;
-      popTimer = 0;
-    }
-    overScore = false;
-    if (!player2) redScore -= points;
-    if (player2) blueScore -= points;
-    if (redScore < 0) {
-      redScore += points;
-      overScore = true;
-    }
-    if (blueScore < 0) {
-      blueScore += points;
-      overScore = true;
-    }
-    if (blueScore == 0) mode = GAMEOVER;
-    if (redScore == 0) mode = GAMEOVER;
-  }
-}
-
-void textWithOutline(String text, int x, int y, color outline, color inside, float textSize) {
-  fill(outline);
-  textSize(textSize);
-  text(text, x+1.5, y+1.5);
-  text(text, x-1.5, y+1.5);
-  text(text, x-1.5, y-1.5);
-  text(text, x+1.5, y-1.5);
-
-  fill(inside);
-  text(text, x, y);
-}
-void wave() {
-  if (showWave) {
-    for (int i = 0; i < 5; i++) {
-      float d = waveSize - i * 30;
-
-      if (d > 0) {
-        noFill();
-        stroke(#FFD700, map(d, 0, waveMax, 200, 0));
-        strokeWeight(3);
-        circle(popX, popY, d);
-      }
-    }
-  }
-
-  waveSize += waveSpeed;
-
-  if (waveSize > waveMax) {
-    showWave = false;
-  }
-}
-void startWave(int speed, int maxSize) {
-  showWave = true;
-  waveSize = 0;
-  waveSpeed = speed;
-  waveMax = maxSize;
-}
+//void drawTriangle(int x, int y, int x2, int y2) {
+//  //just to make it faster to type(time saver)
+//  strokeWeight(5);
+//  triangle(x, y, x2, y2, width/2, height/3);
+//}
