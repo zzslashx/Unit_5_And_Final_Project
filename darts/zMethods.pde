@@ -165,7 +165,6 @@ void wave() {
   if (showWave) {
     for (int i = 0; i < 5; i++) {
       float d = waveSize - i * 30;
-
       if (d > 0) {
         noFill();
         stroke(#FFD700, map(d, 0, waveMax, 200, 0));
@@ -174,9 +173,7 @@ void wave() {
       }
     }
   }
-
   waveSize += waveSpeed;
-
   if (waveSize > waveMax) {
     showWave = false;
   }
@@ -188,6 +185,33 @@ void startWave(int speed, int maxSize) {
   waveSpeed = speed;
   waveMax = maxSize;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
