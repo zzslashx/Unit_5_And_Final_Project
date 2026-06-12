@@ -17,7 +17,8 @@ void intro() {
 
 
   //information:
-  textWithOutline("Take turns throwing darts and be the first to score 301 points. \n The last dart must hit the exact score. \n \n The middle ring gives tripple the score and the outer ring gives double.", width/2, height/2+50, #BA8C63, 255, 25);
+  textWithOutline("Take turns throwing darts and be the first to score 301 points. \n The last dart must hit the exact score. ", width/2, height/2+50, #BA8C63, 255, 25);
+  textWithOutline("The middle ring gives tripple the score and the outer ring gives double.", width/2, height/2+120, #BA8C63, 255, 23);
 
   // web decoration
   stroke(255, 255, 255, 30);

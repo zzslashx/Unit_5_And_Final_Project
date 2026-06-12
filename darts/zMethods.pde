@@ -156,7 +156,6 @@ void textWithOutline(String text, int x, int y, color outline, color inside, flo
   text(text, x-1.5, y+1.5);
   text(text, x-1.5, y-1.5);
   text(text, x+1.5, y-1.5);
-
   fill(inside);
   text(text, x, y);
 }
