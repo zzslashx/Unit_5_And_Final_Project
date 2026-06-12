@@ -21,5 +21,7 @@ void gameover() {
 
 void gameoverClicks() {
   mode=INTRO;
+  gameover.rewind();
+  gameover.pause();
   resetEverything();
 }

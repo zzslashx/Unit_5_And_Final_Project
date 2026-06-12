@@ -7,6 +7,8 @@ void game() {
   noFill();
   circle(width/2, height/2, 700);
 
+
+
   // top
   for (int i = 0; i < width; i += 15) {
     fill(255, 25);
@@ -29,6 +31,13 @@ void game() {
   noStroke();
   circle(width/2, height/2, 700);
 
+  //riples
+  for (int i=0; i<numRipples; i++) {
+    noFill();
+    strokeWeight(1.5);
+    myRipples[i].show();
+    myRipples[i].act();
+  }
   //separating line
   stroke(0);
   strokeWeight(6);

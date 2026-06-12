@@ -53,6 +53,9 @@ color coolGreen   = #00A86B;
 color ivoryBlack  = #000000;
 
 color random = color(int(random(1, 255)), int(random(1, 255)), int(random(1, 255)), int(random(150, 255)));
+//ripple
+Ripple[] myRipples;
+int numRipples;
 //sound variables
 Minim minim;
 AudioPlayer theme, score, hit, gameover;
@@ -61,7 +64,7 @@ AudioPlayer theme, score, hit, gameover;
 void setup() {
   size(1000, 600, FX2D);
   mode = INTRO;
- 
+
   //surface.setIcon();
   surface.setTitle("Pong Game");
 
@@ -90,6 +93,12 @@ void setup() {
   score = minim.loadFile("SUCCESS.wav");
   hit = minim.loadFile("FAILURE.wav");
   gameover = minim.loadFile("gameover.wav");
+
+  numRipples=10;
+  myRipples = new Ripple[numRipples]; //constructor
+  for (int i=0; i<numRipples; i++) {
+    myRipples[i] = new Ripple();
+  }
 }
 
 void draw() {
