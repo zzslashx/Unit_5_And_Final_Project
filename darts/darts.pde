@@ -2,7 +2,7 @@
 //Programming 11
 //Cheng Cheng
 
-
+//Images
 PImage blue;
 PImage red;
 PImage introScreen;
@@ -66,15 +66,14 @@ void setup() {
   textAlign(CENTER, CENTER);
   xSelected=false;
   ySelected=false;
-  startScore=301;
+  startScore=301; //301 points to win
   sX = 394;
   sY = 333;
   ballSpeed=5;
   vx=ballSpeed;
   vy=-ballSpeed;
-  redScore=startScore;
-  blueScore=startScore;
-  //frameRate(1);
+  redScore=startScore; //to make it easier to change i used startScore (for testing)
+  blueScore=startScore;//to make it easier to change i used startScore (for testing)
   red=loadImage("red.png");
   blue=loadImage("blue.png");
   introScreen=loadImage("introScreen.png");
@@ -90,5 +89,4 @@ void draw() {
   } else {
     println("Error: Mode = " + mode);
   }
-  //println(frameRate);
 }
