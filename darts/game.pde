@@ -2,14 +2,19 @@ void game() {
 
   //background
   //drawGradientRect(width/2, height/2, width, height, #BA8C63, #9D6C3C);
+
   if (player2) {
+
     //fill(cyan, 70);
     //rect(0, 0, width, height);
+
     image(blue, 0, 0, width, height);
     textWithOutline("BLUE'S TURN", width/2, 800, 255, cyan, 50);
   } else {
+
     //fill(brightRed, 20);
     //rect(0, 0, width, height);
+
     image(red, 0, 0, width, height);
     textWithOutline("RED'S TURN", width/2, 800, 255, brightRed, 50);
   }
@@ -27,11 +32,15 @@ void game() {
   //translate(width/4, height/6);
   //drawDartBoard();
   //popMatrix();
+
+
   //selector dot
   fill(0, 150);
   noStroke();
   circle(sX, sY, 25);
   strokeWeight(20);
+
+
   //selector dot line indicator
   // X axis line
   if (xSelected == false) {

@@ -9,7 +9,15 @@ void intro() {
   //translate(width/2-200, -320);
   //drawDartBoard();
   //popMatrix();
+  
+  
   image(introScreen, 0, 0, width, height);
+  
+  //stars decoration animation
+  for (int i=0; i<numStars; i++) {
+    myStars[i].show();
+    myStars[i].act();
+  }
   
   // text
   textWithOutline("DARTS", width/2, height/4+50, 255, gold, 150);

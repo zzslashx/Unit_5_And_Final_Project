@@ -9,6 +9,10 @@ PImage introScreen;
 //import
 import processing.javafx.*;
 
+//star variables
+Star[] myStars;
+int numStars;
+
 //MODE VARIABLES--------------------------------------------------------------------------------
 int mode;
 final int INTRO=0;
@@ -69,7 +73,7 @@ void setup() {
   startScore=301; //301 points to win
   sX = 394;
   sY = 333;
-  ballSpeed=5;
+  ballSpeed=7;
   vx=ballSpeed;
   vy=-ballSpeed;
   redScore=startScore; //to make it easier to change i used startScore (for testing)
@@ -77,6 +81,13 @@ void setup() {
   red=loadImage("red.png");
   blue=loadImage("blue.png");
   introScreen=loadImage("introScreen.png");
+  //stars design
+  numStars=200;
+  myStars = new Star[numStars]; //constructor
+  for (int i=0; i<numStars; i++) {
+    myStars[i] = new Star();
+  }
+  
 }
 
 void draw() {
