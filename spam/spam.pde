@@ -1,5 +1,5 @@
 //random thing for commit spam :)
 void setup(){
-size(50,50);
+size(50,20);
 
 }
