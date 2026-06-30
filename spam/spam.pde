@@ -1,7 +1,7 @@
 int apple = 0; 
 //random thing for commit spam :)
 void setup(){
-size(230,200,P2D);
+size(2320,200,P2D);
 
 
 }
