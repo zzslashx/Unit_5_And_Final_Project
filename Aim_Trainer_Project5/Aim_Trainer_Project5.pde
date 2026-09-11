@@ -14,6 +14,7 @@ import ddf.minim.ugens.*;
 
 
 //MODE VARIABLES--------------------------------------------------------------------------------
+int beetle;
 int egg;
 int mode;
 final int INTRO=0;
