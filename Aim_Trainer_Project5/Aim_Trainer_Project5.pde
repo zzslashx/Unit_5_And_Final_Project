@@ -12,7 +12,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //commit spam pls
 //spammy 
-
+//spammy 
 //MODE VARIABLES--------------------------------------------------------------------------------
 int mode;
 final int INTRO=0;
