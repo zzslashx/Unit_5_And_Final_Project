@@ -11,7 +11,7 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //commit spam pls
-
+//spammy 
 
 //MODE VARIABLES--------------------------------------------------------------------------------
 int mode;
