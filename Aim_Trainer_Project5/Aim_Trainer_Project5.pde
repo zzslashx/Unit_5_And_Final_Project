@@ -1,6 +1,6 @@
-//spammy 
+
 import processing.javafx.*;
-//spammy //spammy //spammy //spammy 
+
 //Cheng Cheng
 //Block 1-1
 //April 15,2026
@@ -11,9 +11,8 @@ import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
-//commit spam pls
-//spammy 
-//spammy 
+
+
 //MODE VARIABLES--------------------------------------------------------------------------------
 int mode;
 final int INTRO=0;
