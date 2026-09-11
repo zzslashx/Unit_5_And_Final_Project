@@ -11,7 +11,7 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //Mode Vars
-
+//mode ars 
 
 
 //MODE VARIABLES--------------------------------------------------------------------------------
