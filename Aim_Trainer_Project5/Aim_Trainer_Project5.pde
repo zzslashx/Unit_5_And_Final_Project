@@ -10,12 +10,10 @@ import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
-
+//commit spam pls
 
 
 //MODE VARIABLES--------------------------------------------------------------------------------
-double angryCatz;
-String melocat;
 int mode;
 final int INTRO=0;
 final int GAME=1;
