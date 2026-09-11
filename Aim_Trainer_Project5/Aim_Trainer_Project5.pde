@@ -1,20 +1,20 @@
 import processing.javafx.*;
-//as
+
 //Cheng Cheng
 //Block 1-1
 //April 15,2026
-//a
+
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
-//Mode Vars
-//mode ars 
+
 
 
 //MODE VARIABLES--------------------------------------------------------------------------------
+int egg;
 int mode;
 final int INTRO=0;
 final int GAME=1;
