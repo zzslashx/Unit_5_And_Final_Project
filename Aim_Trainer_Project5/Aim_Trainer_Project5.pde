@@ -15,6 +15,7 @@ import ddf.minim.ugens.*;
 
 //MODE VARIABLES--------------------------------------------------------------------------------
 double angryCatz;
+String melocat;
 int mode;
 final int INTRO=0;
 final int GAME=1;
